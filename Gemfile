@@ -8,8 +8,6 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -39,7 +37,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
-  gem 'factory_girl_rails', '~> 4.8'
   gem 'cucumber-rails', '~> 1.5', :require => false
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
 end
@@ -57,6 +54,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Mongodb
 gem 'mongoid', '~> 6.2.0'
+gem 'mongo'
+gem 'activerecord-alt-mongo-adapter', '~> 0.1.0'
 
 group :test do
   gem 'capybara', '~> 2.13'
