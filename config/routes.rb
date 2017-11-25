@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-	resources :users
+	resources :users, only: [:create, :show, :update]
 	
-	resources :games, only: [:create, :show]
+	resources :games, only: [:show, :update]
 
 	get 'users/:id/games', to: "users#read_games"
 
 	post 'users/:id/games', to: "users#add_game"
-
-	put 'games/:id/', to: 'games#update_grid_status'
 
 end
