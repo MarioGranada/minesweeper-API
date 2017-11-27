@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+	skip_before_action :verify_authenticity_token  
 	before_action :get_game
 
 	def show
@@ -19,7 +20,16 @@ class GamesController < ApplicationController
 	end
 
 	def update_cells_group
-		
+		positions_array = params[:positions_array]
+		cells_states = params[:cells_states]
+
+		if cells_states.length == positions_array.length
+			positions_array.each_with_index do |position, index|
+				@game.cells[position] = cells_states[index]
+			end
+			@game.save!
+		end
+
 		json_response(@game)
 	end
 

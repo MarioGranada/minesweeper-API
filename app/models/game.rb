@@ -4,8 +4,9 @@ class Game
 
   before_create :init_game
   before_update :update_grid_when_over
+  belongs_to :user, inverse_of: :user
 
-  GAME_STATUS = {:isOver => 'OVER', :inGame => 'IN_GAME'}
+  GAME_STATUS = {:is_over => 'OVER', :in_game => 'IN_GAME'}
   CELL_STATUS = {:red_flag => 'RED_FLAG', :question_mark => 'QUESTION_MARK', :exploded => 'EXPLODED', :covered => 'COVERED', :uncovered => 'UNCOVERED'}
   
   field :rows, type: Integer
@@ -17,8 +18,8 @@ class Game
   field :grid_status
 
 
-  def isOver
-  	self.grid_status == GAME_STATUS::isOver
+  def is_over
+  	self.grid_status == Game::GAME_STATUS[:is_over]
   end
 
   def total_of_cells
@@ -35,20 +36,21 @@ class Game
   	end
 
   	def init_game
-  		self.grid_status = GAME_STATUS::inGame
+  		self.grid_status = Game::GAME_STATUS[:in_game]
   		self.cells = []
+  		self.time = 0
 
   		(0..(self.total_of_cells)).each do |i| 
-  			self.cells.push({:cell_status => CELL_STATUS::covered})
+  			self.cells.push({:cell_status => Game::CELL_STATUS[:covered]})
   		end
 
-  		self.generate_mines_positions
+  		generate_mines_positions
   	end
 
   	def update_grid_when_over
-  		if self.isOver
+  		if self.is_over
   			self.cells.each_with_index do |cell,index|
-  				cell = mines_positions.include?(index) ? CELL_STATUS::exploded : CELL_STATUS::uncovered
+  				cell = mines_positions.include?(index) ? Game::CELL_STATUS[:exploded] : Game::CELL_STATUS[:uncovered]
   			end
   		end
   	end
