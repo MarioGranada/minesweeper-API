@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	skip_before_action :verify_authenticity_token  
-	before_action :get_user, only: [:show, :update, :read_games, :add_game, :update_game] 
+	# before_action :get_user, only: [:show, :update, :read_games, :add_game] 
+	before_action :get_user, except: [:create, :index] 
 
 	def create
 		@user = User.create!(user_params)
