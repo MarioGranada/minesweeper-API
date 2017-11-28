@@ -65,7 +65,4 @@ group :test do
   gem 'email_spec', '~> 2.1'
 end
 
-gem 'sqlite3', :group => [:development, :test]
-group :production do
-  gem 'pg'
-end
+gem 'pg'
