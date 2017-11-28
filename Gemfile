@@ -64,3 +64,8 @@ group :test do
   gem 'mongoid-rspec', git: 'https://github.com/mongoid-rspec/mongoid-rspec.git'
   gem 'email_spec', '~> 2.1'
 end
+
+gem 'sqlite3', :group => [:development, :test]
+group :production do
+  gem 'pg'
+end
