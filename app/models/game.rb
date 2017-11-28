@@ -6,7 +6,7 @@ class Game
   before_update :update_grid_when_over_or_finished
   belongs_to :user, inverse_of: :user
 
-  GAME_STATUS = {:is_over => 'OVER', :in_game => 'IN_GAME', :finished => 'FINISHED'}
+  GAME_STATUS = {:is_over => 'OVER', :in_game => 'IN_GAME', :is_finished => 'FINISHED'}
   CELL_STATUS = {:red_flag => 'RED_FLAG', :question_mark => 'QUESTION_MARK', :exploded => 'EXPLODED', :covered => 'COVERED', :uncovered => 'UNCOVERED'}
   
   field :rows, type: Integer
