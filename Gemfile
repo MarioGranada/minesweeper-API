@@ -41,7 +41,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'cucumber-rails', '~> 1.5', :require => false
   gem 'database_cleaner', '~> 1.6', '>= 1.6.1'
-  gem 'sqlite3'
 end
 
 group :development do
