@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 	skip_before_action :verify_authenticity_token  
-	# before_action :get_user, only: [:show, :update, :read_games, :add_game] 
-	before_action :get_user, except: [:create, :index] 
+	before_action :get_user, except: [:create, :index, :find_user_by_email] 
 
 	def create
 		@user = User.create!(user_params)
@@ -9,6 +8,11 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		json_response(@user)
+	end
+
+	def find_user_by_email
+		@user = User.where(email: user_params[:email]).first
 		json_response(@user)
 	end
 

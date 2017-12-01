@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 	
 	resources :games, only: [:show, :update]
 
+	get 'user_by_email', to: "users#find_user_by_email"
+
 	get 'users/:id/games', to: "users#read_games"
 
 	post 'users/:id/games', to: "users#add_game"
