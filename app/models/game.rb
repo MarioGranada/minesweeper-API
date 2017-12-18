@@ -44,7 +44,7 @@ class Game
 
   private
   	def generate_mines_positions
-  		self.mines_positions = (0..(self.total_of_cells)).to_a.shuffle.take(self.mines_total)
+  		self.mines_positions = (0...(self.total_of_cells)).to_a.shuffle.take(self.mines_total)
   	end
 
   	def init_game
