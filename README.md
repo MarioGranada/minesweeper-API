@@ -9,7 +9,7 @@ This API includes creating, updating, listing and querying users info, as well a
 
 ## Requirements
 
-* MongoDB instance up and running
+* MongoDB instance up and running. For any reference please follow Go [MongoDB environment set up](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/).
 
 * RVM
 
@@ -20,17 +20,19 @@ This API includes creating, updating, listing and querying users info, as well a
 * API Development environment (Postman, JMeter, etc.)
 
 ## Routes Overview
- Prefix Verb  URI Pattern                             Controller#Action
-        users GET   /users(.:format)                        users#index
-              POST  /users(.:format)                        users#create
-         user GET   /users/:id(.:format)                    users#show
-              PATCH /users/:id(.:format)                    users#update
-              PUT   /users/:id(.:format)                    users#update
-         game GET   /games/:id(.:format)                    games#show
-              PATCH /games/:id(.:format)                    games#update
-              PUT   /games/:id(.:format)                    games#update
-user_by_email GET   /user_by_email(.:format)                users#find_user_by_email
-              GET   /users/:id/games(.:format)              users#read_games
-              POST  /users/:id/games(.:format)              users#add_game
-              POST  /games/:id/update_single_cell(.:format) games#update_single_cell
-              POST  /games/:id/update_cells_group(.:format) games#update_cells_group
+
+ Prefix       | Verb  | URI Pattern                              | Controller#Action        |
+--------------|-------|------------------------------------------|--------------------------|
+users         | GET   | /users(.:format)                         | users#index              |
+              | POST  | /users(.:format)                         | users#create             |
+user          | GET   | /users/:id(.:format)                     | users#show               |
+              | PATCH | /users/:id(.:format)                     | users#update             |
+              | PUT   | /users/:id(.:format)                     | users#update             |
+game          | GET   | /games/:id(.:format)                     | games#show               |
+              | PATCH | /games/:id(.:format)                     | games#update             |
+              | PUT   | /games/:id(.:format)                     | games#update             |
+user_by_email | GET   | /user_by_email(.:format)                 | users#find_user_by_email |
+              | GET   | /users/:id/games(.:format)               | users#read_games         |
+              | POST  | /users/:id/games(.:format)               | users#add_game           |
+              | POST  | /games/:id/update_single_cell(.:format)  | games#update_single_cell |
+              | POST  | /games/:id/update_cells_group(.:format)  | games#update_cells_group |
