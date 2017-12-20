@@ -19,11 +19,11 @@ Response body
 |--------------------|----------|---------|----------------------------------------|
 | users              | Yes      | Object  | List of users                          |
 | users[]._id        | Yes      | Object  | Mongodb generated Id Object            |
-| usesr[].created_at | No       | String  | Date when user record was created      |
-| usesr[].email      | Yes      | String  | User email                             |
-| usesr[].name       | Yes      | String  | User name                              |
-| usesr[].password   | No       | String  | User password                          |
-| usesr[].updated_at | No       | String  | Last date when user record was updated |
+| users[].created_at | No       | String  | Date when user record was created      |
+| users[].email      | Yes      | String  | User email                             |
+| users[].name       | Yes      | String  | User name                              |
+| users[].password   | No       | String  | User password                          |
+| users[].updated_at | No       | String  | Last date when user record was updated |
 
 
 ### Request Example
@@ -180,30 +180,75 @@ Response body
 
 Key                     | Value
 ------------------------|----------------------------------------------
-*Relative Path*         | /users
+*Relative Path*         | /users/:id
+*HTTP Method*           | GET
+*Response Format*       | JSON
+
+Query parameters
+-----------------
+
+| Name          | Required | Description     |
+|---------------|----------|-----------------|
+| id            | Yes      | User Id         |
+
+Response body
+--------------
+
+| Element          | Required | Type    | Description                            |
+|------------------|----------|---------|----------------------------------------|
+| user._id         | Yes      | Object  | Mongodb generated Id Object            |
+| user.created_at  | No       | String  | Date when user record was created      |
+| user.email       | Yes      | String  | User email                             |
+| user.name        | Yes      | String  | User name                              |
+| user.password    | No       | String  | User password                          |
+| user.updated_at  | No       | String  | Last date when user record was updated |
+
+
+### Request Example
+``` GET /users/5a399f11d7b2f10658784c1c```
+
+### Response body
+
+```
+{
+    "_id": {
+        "$oid": "5a399f11d7b2f10658784c1c"
+    },
+    "created_at": "2017-12-19T23:21:53.357Z",
+    "email": "mario.granada190@gmail.com",
+    "name": "MarioG",
+    "password": "1234",
+    "updated_at": "2017-12-19T23:21:53.357Z"
+}
+
+```
+
+Key                     | Value
+------------------------|----------------------------------------------
+*Relative Path*         | /users/
 *HTTP Method*           | POST
 *Response Format*       | JSON
 
 Query parameters
 -----------------
 
-| Name            | Required |  Description                        |
-|-----------------|----------|-------------------------------------|
-| name            | Yes      | Name of the new user                |
-| email           | Yes      | Email of the new user               |
-| password        | Yes      | Password of the new user            |
+| Name            | Required | Description                           |
+|-----------------|----------|---------------------------------------|
+| name            | Yes      | Name of the new user                  |
+| email           | Yes      | Email of the new user                 |
+| password        | Yes      | Password of the new user              |
 
 Response body
 --------------
 
-| Element            | Required | Type    | Description                            |
-|--------------------|----------|---------|----------------------------------------|
-| users[]._id        | Yes      | Object  | Mongodb generated Id Object            |
-| usesr[].created_at | No       | String  | Date when user record was created      |
-| usesr[].email      | Yes      | String  | User email                             |
-| usesr[].name       | Yes      | String  | User name                              |
-| usesr[].password   | No       | String  | User password                          |
-| usesr[].updated_at | No       | String  | Last date when user record was updated |
+| Element          | Required | Type    | Description                            |
+|------------------|----------|---------|----------------------------------------|
+| user._id         | Yes      | Object  | Mongodb generated Id Object            |
+| user.created_at  | No       | String  | Date when user record was created      |
+| user.email       | Yes      | String  | User email                             |
+| user.name        | Yes      | String  | User name                              |
+| user.password    | No       | String  | User password                          |
+| user.updated_at  | No       | String  | Last date when user record was updated |
 
 
 ### Request Example
@@ -223,6 +268,77 @@ Response body
     "updated_at": "2017-12-19T23:21:53.357Z"
 }
 
+```
+
+Key                     | Value
+------------------------|----------------------------------------------
+*Relative Path*         | /users/:id
+*HTTP Method*           | PATCH, PUT 
+*Response Format*       | JSON
+
+Query parameters
+-----------------
+
+| Name            | Required |  Description                        |
+|-----------------|----------|-------------------------------------|
+| name            | Yes      | Name of the new user                |
+| email           | Yes      | Email of the new user               |
+| password        | Yes      | Password of the new user            |
+
+Response body
+--------------
+N/A
+
+
+### Request Example
+``` PUT /users/5a399f11d7b2f10658784c1c?name=MarioG&email='mario.granada190@gmail.com'&password='1234' ```
+
+### Response body
+
+```N/A```
+
+Key                     | Value
+------------------------|----------------------------------------------
+*Relative Path*         | /user_by_email/
+*HTTP Method*           | GET
+*Response Format*       | JSON
+
+Query parameters
+-----------------
+
+| Name          | Required | Description                     |
+|---------------|----------|---------------------------------|
+| email         | Yes      | Email of the user to search for |
+
+Response body
+--------------
+
+| Element          | Required | Type    | Description                            |
+|------------------|----------|---------|----------------------------------------|
+| user._id         | Yes      | Object  | Mongodb generated Id Object            |
+| user.created_at  | No       | String  | Date when user record was created      |
+| user.email       | Yes      | String  | User email                             |
+| user.name        | Yes      | String  | User name                              |
+| user.password    | No       | String  | User password                          |
+| user.updated_at  | No       | String  | Last date when user record was updated |
+
+
+### Request Example
+``` GET /user_by_email/?email=mario.granada190@gmail.com```
+
+### Response body
+
+```
+{
+    "_id": {
+        "$oid": "5a399f11d7b2f10658784c1c"
+    },
+    "created_at": "2017-12-19T23:21:53.357Z",
+    "email": "mario.granada190@gmail.com",
+    "name": "MarioG",
+    "password": "1234",
+    "updated_at": "2017-12-19T23:21:53.357Z"
+}
 
 ```
 
